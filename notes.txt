@@ -1,0 +1,26 @@
+folder structure
+----------------
+
+1) src/components : to write all resuable UI blocks used in pages, eg- SummaryCard.jsx, TransactionTable.jsx etc
+
+2) src/pages : to write non resuable components, full screens connected to routes, eg- Dashboard.jsx, Insight.jsx, Transactions.jsx
+
+3) src/layouts : The layouts folder stores page wrappers that define the structure shared across multiple screens. eg- Sidebar, Header, Main Content Area
+
+4) src/constants/ : Stores reusable global constants, eg- roles.js
+routes.js
+colors.js
+
+5) src/mockdata/ : simulates backend-data
+
+6) src/styles/ : to store css styling
+------
+REDUX
+------
+npm i @reduxjs/toolkit react-redux
+------------
+1) src/app/store.js : Stores Redux store configuration, acts as central state registry
+
+2) src/features/ : Stores Redux slices grouped by feature, Industry standard structure (recommended by Redux Toolkit docs)
+
+2.1) src/features/auth/authSlice.js
