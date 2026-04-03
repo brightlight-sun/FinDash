@@ -5,7 +5,7 @@ folder structure
 
 2) src/pages : to write non resuable components, full screens connected to routes, eg- Dashboard.jsx, Insight.jsx, Transactions.jsx
 
-3) src/layouts : The layouts folder stores page wrappers that define the structure shared across multiple screens. eg- Sidebar, Header, Main Content Area
+3) src/layouts : The layouts folder stores page wrappers that define the structure shared across multiple screens. eg- Sidebar, Header, Main Content Area -> Header and sidebar putten inside DashboardLayout
 
 4) src/constants/ : Stores reusable global constants, eg- roles.js
 routes.js
@@ -15,7 +15,7 @@ colors.js
 
 6) src/styles/ : to store css styling
 ------
-REDUX
+REDUX folder structure
 ------
 npm i @reduxjs/toolkit react-redux
 ------------
