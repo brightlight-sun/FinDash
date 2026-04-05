@@ -11,17 +11,18 @@ import Insights from './pages/Insight';
 function App() {
   // const [count, setCount] = useState(0)
 
-  return ( <div>
+  return ( 
    <DashboardLayout>
       <Routes>
-        <Route path="/" element={Dashboard} />
-        <Route path="/transactions" element={Transactions} />
-        <Route path="/insights" element={Insights} />
+
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/transactions" element={<Transactions/>} />
+        <Route path="/insights" element={<Insights />} />
 
       </Routes>
 
    </DashboardLayout>
-    </div>
+
   )
 }
 

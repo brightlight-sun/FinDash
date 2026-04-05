@@ -1,7 +1,11 @@
-function Transactions () {
+import TransactionTable from "../components/TransactionTable";
+
+
+
+const Transactions =  () =>  {
     return (
-        <div>
-            <h1>Transactions</h1>
+        <div className="container-fluid">
+            <TransactionTable/>
         </div>
     )
 }

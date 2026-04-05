@@ -1,23 +1,107 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { transactions } from '../mockdata/transactions';
+import { useSelector, useDispatch } from 'react-redux';
+import EditTransactionModal from './EditTransactionModal';
+import AddTransactionModal from './AddTransactionModal';
+import {
+    addTransaction,
+    deleteTransaction,
+    updateTransaction,
+    setSearchTerm,
+    setFilterType,
+    setSortOrder
+} from '../features/transactions/transactionsSlice';
+import { useLayout } from "../context/LayoutContext";
+
+
+
 
 const TransactionTable = () => {
 
-    const role = useSelector((state) => state.auth.role);
+    const { darkMode } = useLayout();
 
-    const [searchTerm, setSearchTerm] = useState("");
-    const [filterType, setFilterType] = useState("all");
-    const [sortOrder, setSortOrder] = useState("newest");
+    const dispatch = useDispatch();
+
+    const {
+        list: transactions,
+        searchTerm,
+        filterType,
+        sortOrder
+    } = useSelector(
+        (state) => state.transactions
+    );
+
+
+    const role = useSelector(
+        (state) => state.auth.role
+    )
+
+    // const [setTransactions] = useState(initialTransactions);
+
+    //modal state
+    const [showModal, setShowModal] = useState(false);
+    const [editModal, setEditModal] = useState(false);
+    const [selectedTransaction, setSelectedTransaction] = useState(null);
+
+    const handleEditClick = (transaction) => {
+
+        setSelectedTransaction(transaction);
+
+        setEditModal(true);
+
+    };
+
+    const handleUpdateTransaction = (transaction) => {
+
+        dispatch(updateTransaction(transaction));
+
+    };
+
+    // const [newTransaction, setNewTransaction] = useState({
+    //     date: "",
+    //     category: "",
+    //     type: "income",
+    //     amount: ""
+    // })
+
+    // function to add new transaction to the table
+    // const addTransaction = (transaction) => {
+    //     const newEntry = {
+    //         id: Date.now(),
+    //         ...transaction
+    //     }
+    //     setTransactions([newEntry, ...transactions]);
+    // }
+
+    //addition transaction handler for redux
+    const handleAddTransaction = (transaction) => {
+        dispatch(
+            addTransaction({
+                id: Date.now(),
+                ...transaction
+            })
+        );
+    };
+
+    // Delete transaction handler
+    const handleDeleteTransaction = (id) => {
+
+        dispatch(deleteTransaction(id));
+
+    };
 
     let filteredTransactions = [...transactions];
+
+    //filter states
+    // const [searchTerm, setSearchTerm] = useState("");
+    // const [filterType, setFilterType] = useState("all");
+    // const [sortOrder, setSortOrder] = useState("newest");
 
     //search logic -> filters category
     filteredTransactions = filteredTransactions.filter((t) =>
         t.category.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    //filter  logic -> filters income / expense
+    //type filter  logic -> filters income / expense
     if (filterType !== "all") {
         filteredTransactions = filteredTransactions.filter((t) => t.type === filterType);
     }
@@ -32,24 +116,46 @@ const TransactionTable = () => {
         }
     });
 
+
+
     return (
-        <div className="card shadow-sm border-0">
+        <div
+            className={`card shadow-sm border-0 ${darkMode ? "bg-dark text-light" : ""
+                }`}
+        >
 
             <div className="card-body">
                 <h5 className="mb-3">Transactions</h5>
-                {/* control panner -> search, sort , filter */}
+
+                {/* add transaction button */}
+
+                {role === "admin" && (
+
+                    <button
+                        className="btn btn-primary mb-3"
+
+                        onClick={() => setShowModal(true)}
+                    >
+                        + Add Transaction
+
+                    </button>
+                )}
+
+
+
+                {/* control pannel -> search, sort , filter */}
 
                 <div className="d-flex flex-wrap gap-2 mb-3">
 
                     <input type="text" className="form-control w-auto"
                         placeholder="Search Category"
                         value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)} />
+                        onChange={(e) => dispatch(setSearchTerm(e.target.value))} />
 
                     <select
                         className="form-select w-auto"
                         value={filterType}
-                        onChange={(e) => setFilterType(e.target.value)}
+                        onChange={(e) => dispatch(setFilterType(e.target.value))}
                     >
                         <option value="all">All Types</option>
                         <option value="income">Income</option>
@@ -57,10 +163,10 @@ const TransactionTable = () => {
 
                     </select>
 
-                    <select 
+                    <select
                         className="form-select w-auto"
                         value={sortOrder}
-                        onChange={(e) => setSortOrder(e.target.value)}
+                        onChange={(e) => dispatch(setSortOrder(e.target.value))}
                     >
                         <option value="newest">Newest First</option>
                         <option value="oldest">Oldest First</option>
@@ -68,10 +174,15 @@ const TransactionTable = () => {
                     </select>
                 </div>
 
-                {/* transactions table with admit control column */}
+                {/* transactions table 
+                with admim control column */}
+
                 <div className="table-responsive">
 
-                    <table className="table table-hover align-middle">
+                    <table
+                        className={`table table-hover align-middle ${darkMode ? "table-dark" : ""
+                            }`}
+                    >
 
                         <thead>
                             <tr>
@@ -87,48 +198,108 @@ const TransactionTable = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {filteredTransactions.map((t) => (
 
-                                <tr key={t.id}>
-                                    <td>{t.date}</td>
-                                    <td>{t.category}</td>
 
-                                    <td>
-                                        <span
-                                            className={`badge ${t.type === "income" ? "bg-success" : "bg-danger"}`}
-                                        >
-                                            {t.type}
-                                        </span>
-                                    </td>
+                            {filteredTransactions.length === 0 ? (
+
+                                <tr>
 
                                     <td
-                                        className={`fw-semibold 
-                                            ${t.type === "income" ? "text-success" : "text-danger"}`}
+                                        colSpan={role === "admin" ? 5 : 4}
+                                        className="text-center text-muted"
                                     >
 
-                                        ₹{t.amount}
+                                        No transactions found
 
                                     </td>
 
-                                    {role === "admin" && (
-
-                                        <td>
-
-                                            <button className="btn btn-sm btn-outline-primary me-2">Edit</button>
-
-                                            <button className="btn btn-sm btn-outline-danger">Delete</button>
-
-                                        </td>
-                                    )}
                                 </tr>
 
-                            ))}
+                            ) : (
+
+                                filteredTransactions.map((t) => (
+
+                                    <tr key={t.id}>
+
+                                        <td>{t.date}</td>
+
+                                        <td>{t.category}</td>
+
+                                        <td>
+                                            <span
+                                                className={`badge ${t.type === "income"
+                                                    ? "bg-success"
+                                                    : "bg-danger"
+                                                    }`}
+                                            >
+                                                {t.type}
+                                            </span>
+                                        </td>
+
+                                        <td
+                                            className={`fw-semibold ${t.type === "income"
+                                                ? "text-success"
+                                                : "text-danger"
+                                                }`}
+                                        >
+                                            ₹{t.amount}
+                                        </td>
+
+                                        {role === "admin" && (
+
+                                            <td>
+
+                                                <button
+                                                    className="btn btn-sm btn-outline-primary me-2"
+                                                    onClick={() => handleEditClick(t)}
+                                                >
+                                                    Edit
+                                                </button>
+
+                                                <button
+                                                    className="btn btn-sm btn-outline-danger"
+                                                    onClick={() =>
+                                                        handleDeleteTransaction(t.id)
+                                                    }
+                                                >
+                                                    Delete
+                                                </button>
+
+                                            </td>
+
+                                        )}
+
+                                    </tr>
+
+                                ))
+
+                            )}
+
                         </tbody>
                     </table>
                 </div>
+
+                <AddTransactionModal
+
+                    showModal={showModal}
+                    setShowModal={setShowModal}
+                    addTransaction={handleAddTransaction}
+                />
+                <EditTransactionModal
+
+                    showModal={editModal}
+
+                    setShowModal={setEditModal}
+
+                    selectedTransaction={selectedTransaction}
+
+                    updateTransaction={handleUpdateTransaction}
+
+                />
+
             </div>
         </div>
     )
-}
+};
 
 export default TransactionTable;

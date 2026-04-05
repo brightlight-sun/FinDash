@@ -5,6 +5,10 @@
   "type": "module",
   "scripts": {
     "Mydev": "vite",
+   
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d dist",
+
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -16,7 +20,8 @@
     "react-dom": "^19.2.4",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.13.2",
-    "react-toastify": "^11.0.5"
+    "react-toastify": "^11.0.5",
+    "recharts": "^3.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

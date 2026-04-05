@@ -8,7 +8,8 @@ import {
     Legend
 } from "recharts";
 
-import { transactions } from "../mockdata/transactions";
+import { useSelector } from "react-redux";
+import { useLayout } from "../context/LayoutContext";
 
 const COLORS = [
     "#0d6efd",
@@ -19,6 +20,13 @@ const COLORS = [
 ];
 
 const SpendingPieChart = () => {
+
+    const { darkMode } = useLayout();
+
+    const transactions = useSelector(
+        (state) => state.transactions.list
+    );
+
     const expenses = transactions
         .filter((t) => t.type === "expense");
 
@@ -34,13 +42,16 @@ const SpendingPieChart = () => {
     );
 
     return (
-        <div className="card shadow-sm border-0 h-100">
+        <div
+            className={`card shadow-sm border-0 h-100 ${darkMode ? "bg-dark text-light" : ""
+                }`}
+        >
 
             <div className="card-body">
 
                 <h6 className="mb-3">Spending Breakdown</h6>
 
-                <ResponsiveContainer width="100%" height={350}>
+                <ResponsiveContainer width="110%" height={350}>
 
                     <PieChart>
                         <Pie
@@ -61,8 +72,8 @@ const SpendingPieChart = () => {
                             )}
 
                         </Pie>
-                        <Tooltip/>
-                        <Legend/>
+                        <Tooltip />
+                        <Legend />
                     </PieChart>
 
                 </ResponsiveContainer>

@@ -1,23 +1,59 @@
 import Header from "./Header";
-import Sidebar from './SideBar';
-const DashboardLayout = ({children}) =>  {
-    return (
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col-3 p-0">
-                    <Sidebar/>
-                </div>
-                <div className="col-9 p-0">
-                    <Header/>
+import Sidebar from "./SideBar";
+import { useLayout } from "../context/LayoutContext";
 
-                    <div className="p-4">
-                    {children}
+
+const DashboardLayout = ({ children }) => {
+
+    const { darkMode, sidebarOpen } = useLayout();
+
+    return (
+
+        <div
+            className={`container-fluid min-vh-100 ${darkMode
+                ? "bg-black text-light"
+                : "bg-light text-dark"
+                }`}
+        >
+
+<div className="d-flex min-vh-100 position-relative">
+
+
+                {/* Sidebar */}
+
+                <div
+                    className={`sidebar-wrapper ${sidebarOpen ? "sidebar-open" : "sidebar-closed"
+                        }`}
+                >
+                    <Sidebar />
                 </div>
+
+
+                {/* Main Content */}
+
+                <div
+    className={`main-content-wrapper d-flex flex-column ${
+        sidebarOpen ? "content-shift" : ""
+    }`}
+>
+
+                    <Header />
+
+                    <div className="p-4 flex-grow-1">
+
+                        {children}
+
+                    </div>
+
                 </div>
-                
+
+
             </div>
+
         </div>
-    )
-}
+
+    );
+
+};
 
 export default DashboardLayout;
