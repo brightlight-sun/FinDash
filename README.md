@@ -9,14 +9,14 @@ It demonstrates component-driven UI design, chart-based insights, role-based int
 
 
 # Tech Stack
-React
-Vite
-Redux Toolkit
-React Context API
-React Router DOM
-Bootstrap 5
-Recharts
-React Toastify
+- React
+- Vite
+- Redux Toolkit
+- React Context API
+- React Router DOM
+- Bootstrap 5
+- Recharts
+- React Toastify
 
 
 # Features
