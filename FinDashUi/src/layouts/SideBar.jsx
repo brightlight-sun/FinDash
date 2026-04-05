@@ -4,6 +4,7 @@ import logo from "/images/logo.png";
 const Sidebar = () => {
 
     const { darkMode } = useLayout();
+    const {toggleSidebar} = useLayout();
 
     return (
 
@@ -15,7 +16,9 @@ const Sidebar = () => {
         >
 
             {/* logo */}
-            <NavLink to="/" className="d-flex justify-content-center align-items-center mb-1">
+            <NavLink to="/" className="d-flex justify-content-center align-items-center mb-1"
+            onClick={toggleSidebar}
+            >
                 <img
                     src={logo}
                     alt="findash logo"
@@ -53,6 +56,7 @@ const Sidebar = () => {
                             }`
                         }
                         to="/"
+                        onClick={toggleSidebar}
                     >
                         Dashboard
                     </NavLink>
@@ -72,6 +76,8 @@ const Sidebar = () => {
                             }`
                         }
                         to="/transactions"
+
+                        onClick={toggleSidebar}
                     >
                         Transactions
                     </NavLink>
@@ -91,6 +97,8 @@ const Sidebar = () => {
                             }`
                         }
                         to="/insights"
+
+                        onClick={toggleSidebar}
                     >
                         Insights
                     </NavLink>
