@@ -1,0 +1,40 @@
+/* Sidebar animation */
+
+.sidebar-wrapper {
+    width: 240px;
+    transition: width 0.35s ease-in-out;
+    overflow: hidden;
+}
+
+.sidebar-closed {
+    width: 0;
+}
+
+.sidebar-open {
+    transform: translateX(0);
+}
+
+
+/* Main content animation */
+
+.main-content-wrapper {
+    flex: 1;
+    transition: margin-left 0.35s ease-in-out;
+}
+
+.content-shift {
+    margin-left: 0;
+}
+
+
+/* Mobile behavior */
+
+@media (max-width: 768px) {
+
+    .sidebar-wrapper {
+        position: absolute;
+        z-index: 1050;
+        height: 100vh;
+    }
+
+}
