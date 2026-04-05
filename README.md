@@ -1,6 +1,6 @@
 # FinDash - Finace Dashboard Ui
 
-gh-pages deployed link : https://brightlight-sun.github.io/FinDash/
+**gh-pages deployed link** : https://brightlight-sun.github.io/FinDash/
 
 # Overview
 
@@ -20,33 +20,36 @@ React Toastify
 
 
 # Features
-Dashboard
 
-Summary cards, balance trend chart, spending breakdown pie chart.
+**Dashboard**
 
-Transactions
+- Summary cards, balance trend chart, spending breakdown pie chart.
 
-Search, filter, sort, add/edit/delete (admin only), responsive table.
+**Transactions**
 
-Role-Based UI
+- Search, filter, sort, add/edit/delete (admin only), responsive table.
 
-Viewer → read-only access
+**Role-Based UI**
 
-Admin → full transaction control
+- Viewer → read-only access
 
-Insights
+- Admin → full transaction control
 
-Highest spending category, monthly comparison, percentage trend observation.
+**Insights**
 
-Dark Mode
+- Highest spending category, monthly comparison, percentage trend observation.
 
-Theme toggle using Context API across layout and components.
+**Dark Mode**
+
+- Theme toggle using Context API across layout and components.
 
 
-Folder Structure
+# Folder Structure
 
 src/
+
 │
+
 ├── components/        # Reusable UI components
 
 ├── pages/             # Route-level screens
@@ -65,12 +68,18 @@ src/
 
 ├── styles/            # custom styling using css
 
-Future Improvements
 
-Potential upgrades for production readiness:
+# Future Improvements
 
-Backend API integration
-Authentication system
-Persistent user preferences
-CSV export functionality
-Advanced analytics filters
+**Potential upgrades for production readiness:**
+
+- Backend API integration
+
+- Authentication system
+
+- Persistent user preferences
+
+- CSV export functionality
+
+- Advanced analytics filters
+
