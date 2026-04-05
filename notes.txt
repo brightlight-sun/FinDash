@@ -14,6 +14,8 @@ colors.js
 5) src/mockdata/ : simulates backend-data
 
 6) src/styles/ : to store css styling
+
+7) src/context/ : to store UseContext -> LayoutContext.jsx
 ------
 REDUX folder structure
 ------
