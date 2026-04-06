@@ -1,3 +1,7 @@
+// context for layout related state like dark mode and sidebar visibility
+// Provides a global state for layout preferences and controls across the app
+// This allows components to easily access and toggle dark mode and sidebar state
+
 import { createContext, useContext, useState, useEffect } from "react";
 
 const LayoutContext = createContext();

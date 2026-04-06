@@ -2,8 +2,9 @@ import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 // imports from layouts
-
 import DashboardLayout from './layouts/DashboardLayout';
+
+// imports from pages
 import Dashboard from './pages/Dashboard';
 import Transactions from './pages/Transactions';
 import Insights from './pages/Insight';

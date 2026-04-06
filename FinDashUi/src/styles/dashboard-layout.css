@@ -1,0 +1,19 @@
+/* layout surface: sidebar + header + footer */
+
+.dashboard-layout {
+    background-color: #f4f6f9;
+}
+
+
+/* workspace center panel */
+
+.main-content {
+    background-color: #eef2f7;
+}
+
+
+/* footer surface */
+
+.footer {
+    background-color: #ffffff;
+}

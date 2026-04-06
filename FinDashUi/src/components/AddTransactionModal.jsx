@@ -1,4 +1,7 @@
 // separted from TransactionTable.jsx
+// Add new Transaction
+// form with fields for date, category, type and amount
+// validates input and calls addTransaction function passed as prop to update transactions list in parent component
 
 import { useState } from "react";
 
@@ -67,6 +70,7 @@ const AddTransactionModal = ({
 
           </div>
 
+          {/* add new transaction form */}
           <div className="modal-body">
 
             <input

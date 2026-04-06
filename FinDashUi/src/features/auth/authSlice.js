@@ -1,3 +1,7 @@
+// redux slice for authentication state management
+// Handles user login/logout and role management
+// For simplicity, this example uses hardcoded user data and roles.
+
 import { ROLES } from "../../constants/roles";
 import { createSlice } from "@reduxjs/toolkit";
 

@@ -1,3 +1,7 @@
+// insights page component that shows insights and trends based on transactions data
+// uses Redux to access transactions data and performs calculations for insights
+// also uses layout context to adapt to dark mode
+
 import { useSelector } from "react-redux";
 import { useLayout } from "../context/LayoutContext";
 

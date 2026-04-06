@@ -1,4 +1,5 @@
 // reusable widget component
+// used in dashboard page to show summary of financial data
 
 import { useLayout } from "../context/LayoutContext";
 
@@ -28,7 +29,7 @@ const SummaryCard = ({ title, value, color }) => {
                     {title}
                 </p>
 
-                <h4 className={`fw-bold ${color} mb-0`}>
+                <h4 className={`fw-bold ${darkMode && color === "text-success" ? "text-warning" : color} mb-0`}>
                     {value}
                 </h4>
 

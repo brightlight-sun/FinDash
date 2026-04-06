@@ -1,3 +1,6 @@
+// spending breakdown pie chart for dashboard page
+// uses Recharts library to render a pie chart of expenses by category
+// accesses transactions data from Redux and calculates totals by category
 
 import {
     PieChart,

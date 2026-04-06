@@ -1,3 +1,7 @@
+// main transaction table component for transactions page
+// also used in dashboard page with limited features
+// contains logic for searching, filtering and sorting transactions
+
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import EditTransactionModal from './EditTransactionModal';

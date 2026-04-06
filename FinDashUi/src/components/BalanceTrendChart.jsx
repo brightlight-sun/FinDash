@@ -1,3 +1,7 @@
+// balance trend line chart for dashboard page
+// uses Recharts library to render a line chart of balance over time
+// accesses transactions data from Redux and calculates running balance for each date
+
 import {
     LineChart,
     Line,

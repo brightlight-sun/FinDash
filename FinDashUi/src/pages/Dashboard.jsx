@@ -1,8 +1,12 @@
+// main dashboard page that shows summary cards, balance trend chart and spending pie chart
+// uses Redux to access transactions data and perform calculations for summary cards and charts
+// also uses layout context to adapt to dark mode
+
 import BalanceTrendChart from "../components/BalanceTrendChart";
 import SpendingPieChart from "../components/SpendingPieChart";
 import SummaryCard from "../components/SummaryCard";
 import { useSelector } from "react-redux";
-
+import "../styles/dashboard-layout.css";
 
 
 const Dashboard = () => {
@@ -25,20 +29,11 @@ const Dashboard = () => {
 
 
     return (
-        <div className="container-fluid">
-            
+        <div className=" container-fluid">
+
             {/* summary cards */}
             <div className="row g-3">
-
-                <div className="col-md-3">
-                    <SummaryCard
-                        title="Total Balance"
-                        value={`₹${totalBalance}`}
-                        color="text-primary"
-
-                    />
-                </div>
-
+                {/* income */}
                 <div className="col-md-3">
                     <SummaryCard
                         title="Income"
@@ -48,6 +43,7 @@ const Dashboard = () => {
                     />
                 </div>
 
+                {/* expenses */}
                 <div className="col-md-3">
                     <SummaryCard
                         title="Expenses"
@@ -57,6 +53,17 @@ const Dashboard = () => {
                     />
                 </div>
 
+                {/* balance (income - expense ) */}
+                <div className="col-md-3">
+                    <SummaryCard
+                        title="Total Balance"
+                        value={`₹${totalBalance}`}
+                        color="text-primary"
+
+                    />
+                </div>
+
+                {/* saving percentage */}
                 <div className="col-md-3">
                     <SummaryCard
                         title="Savings %"
@@ -67,8 +74,8 @@ const Dashboard = () => {
                 </div>
 
             </div>
-            
-            {/* pie chart */}
+
+            {/* graph + pie chart */}
             <div className="row g-3 mt-1">
 
                 <div className="col-md-8">

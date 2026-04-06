@@ -1,3 +1,6 @@
+// transactions page component that renders the main transaction table
+//  
+
 import TransactionTable from "../components/TransactionTable";
 
 

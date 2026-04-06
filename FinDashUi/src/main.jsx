@@ -3,7 +3,7 @@ import { StrictMode } from "react";
 import App from './App.jsx'
 
 import { BrowserRouter } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
+// import { ToastContainer } from 'react-toastify'
 
 import { Provider } from "react-redux";
 import { store } from "./app/store";
@@ -21,7 +21,7 @@ createRoot(document.getElementById('root')).render(
       <LayoutProvider>
         <BrowserRouter basename="/FinDash/">
           <App />
-          <ToastContainer autoClose={2000} />
+          {/* <ToastContainer autoClose={2000} /> */}
         </BrowserRouter>
       </LayoutProvider>
     </Provider>

@@ -1,10 +1,7 @@
-/* ===============================
-   SIDEBAR + LAYOUT TRANSITIONS
-   =============================== */
+/* Sidebar + transition Layout CSS */
 
 
-/* ===== Desktop Sidebar Behavior ===== */
-
+/* Desktop Sidebar Behavior */
 .sidebar-wrapper {
 
     width: 240px;
@@ -15,7 +12,6 @@
 
 
 /* Collapse sidebar on desktop */
-
 .sidebar-closed {
 
     width: 0;
@@ -24,7 +20,6 @@
 
 
 /* Keep content flexible */
-
 .main-content-wrapper {
 
     flex: 1;
@@ -34,9 +29,7 @@
 
 
 
-/* ===============================
-   MOBILE SIDEBAR BEHAVIOR
-   =============================== */
+/* MOBILE SIDEBAR BEHAVIOR */
 
 @media (max-width: 768px) {
 
@@ -58,7 +51,6 @@
 
 
     /* Slide sidebar into view */
-
     .sidebar-open {
 
         transform: translateX(0);
@@ -67,7 +59,6 @@
 
 
     /* Slide sidebar out of view */
-
     .sidebar-closed {
 
         transform: translateX(-100%);
@@ -78,10 +69,7 @@
 
 
 
-/* ===============================
-   OPTIONAL BACKDROP (Mobile Only)
-   =============================== */
-
+/* OPTIONAL BACKDROP (Mobile Only) */
 .sidebar-backdrop {
 
     position: fixed;
@@ -92,7 +80,7 @@
     width: 100%;
     height: 100%;
 
-    background: rgba(0,0,0,0.35);
+    background: rgba(0, 0, 0, 0.35);
 
     z-index: 1040;
 

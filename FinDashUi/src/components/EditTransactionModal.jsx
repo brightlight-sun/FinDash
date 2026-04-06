@@ -1,3 +1,7 @@
+// separted from TransactionTable.jsx
+// Edit existing Transaction
+// similar to AddTransactionModal but pre-fills form with selected transaction data and updates instead of adding
+
 import { useState, useEffect } from "react";
 
 const EditTransactionModal = ({
@@ -62,6 +66,7 @@ const EditTransactionModal = ({
 
           </div>
 
+          {/* edit transaction form */}
           <div className="modal-body">
 
             <input

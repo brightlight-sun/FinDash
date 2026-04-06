@@ -1,23 +1,30 @@
+// sidebar component for dashboard layout
+// contains navigation links to different pages and adapts to dark mode using layout context
+// also toggles sidebar visibility on smaller screens when a link is clicked
+
+
 import { NavLink } from "react-router-dom";
 import { useLayout } from "../context/LayoutContext";
 import logo from "/images/logo.png";
+import "../styles/dashboard-layout.css";
+
 const Sidebar = () => {
 
     const { darkMode } = useLayout();
-    const {toggleSidebar} = useLayout();
+    const { toggleSidebar } = useLayout();
 
     return (
 
         <div
-            className={`sidebar min-vh-100 p-3 d-flex flex-column ${darkMode
+            className={`dashboard-layout sidebar min-vh-100 p-3 h-100 d-flex flex-column ${darkMode
                 ? "bg-dark text-light outline-primary border-end"
-                : "bg-white text-dark border-end"
+                : " text-dark border-end"
                 }`}
         >
 
             {/* logo */}
             <NavLink to="/" className="d-flex justify-content-center align-items-center mb-1"
-            onClick={toggleSidebar}
+                onClick={toggleSidebar}
             >
                 <img
                     src={logo}
@@ -43,7 +50,7 @@ const Sidebar = () => {
 
             <ul className="nav flex-column gap-2">
 
-
+                {/* Dashboard page link */}
                 <li className="nav-item">
 
                     <NavLink
@@ -63,7 +70,7 @@ const Sidebar = () => {
 
                 </li>
 
-
+                {/* Transactions page link */}
                 <li className="nav-item">
 
                     <NavLink
@@ -84,7 +91,7 @@ const Sidebar = () => {
 
                 </li>
 
-
+                {/* Insights page link */}
                 <li className="nav-item">
 
                     <NavLink

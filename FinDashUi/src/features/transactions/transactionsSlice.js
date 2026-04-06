@@ -1,3 +1,7 @@
+// redux slice for transactions data and controls
+// Handles global transactions data state with add, update, delete,
+// search/filter/sort controls and saves changes to localStorage.
+
 import { createSlice } from "@reduxjs/toolkit";
 import { transactions as initialTransactions } from "../../mockdata/transactions";
 

@@ -1,7 +1,13 @@
+// main dashboard layout component that wraps all pages
+// contains header, sidebar and footer components
+// uses layout context to manage dark mode and sidebar state
+// adapts styles based on dark mode and sidebar visibility
+
 import Header from "./Header";
 import Sidebar from "./SideBar";
 import { useLayout } from "../context/LayoutContext";
-
+import Footer from "./footer";
+import "../styles/dashboard-layout.css";
 
 const DashboardLayout = ({ children }) => {
 
@@ -10,13 +16,12 @@ const DashboardLayout = ({ children }) => {
     return (
 
         <div
-            className={`container-fluid px-0 vh-100 ${darkMode
+            className={`dashboard-layout container-fluid px-0 min-vh-100 d-flex flex-column ${darkMode
                 ? "bg-black text-light"
-                : "bg-light text-dark"
+                : " text-dark"
                 }`}
         >
-
-<div className="d-flex min-vh-100 position-relative">
+            <div className="d-flex min-vh-100 position-relative align-items-stretch  ">
 
 
                 {/* Sidebar */}
@@ -32,24 +37,26 @@ const DashboardLayout = ({ children }) => {
                 {/* Main Content */}
 
                 <div
-    className={`main-content-wrapper d-flex flex-column ${
-        sidebarOpen ? "content-shift" : ""
-    }`}
->
+                    className={`  main-content-wrapper d-flex flex-column flex-grow-1 min-vh-100 ${sidebarOpen ? "content-shift" : ""
+                        }`}
+                >
 
                     <Header />
 
-                    <div className="p-4 flex-grow-1">
-
+                    {/* main-content : childrens */}
+                    <div
+                        className={` main-content p-4 flex-grow-1 ${darkMode ? "bg-dark text-light" : " text-dark"
+                            }`}
+                    >
                         {children}
-
                     </div>
+
+                    <Footer />
 
                 </div>
 
 
             </div>
-
         </div>
 
     );
