@@ -10,7 +10,7 @@ const DashboardLayout = ({ children }) => {
     return (
 
         <div
-            className={`container-fluid min-vh-100 ${darkMode
+            className={`container-fluid px-0 vh-100 ${darkMode
                 ? "bg-black text-light"
                 : "bg-light text-dark"
                 }`}

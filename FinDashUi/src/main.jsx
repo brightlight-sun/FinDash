@@ -13,6 +13,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { LayoutProvider } from './context/LayoutContext';
 
 import './styles/sidebarTransition.css';
+import "./index.css";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

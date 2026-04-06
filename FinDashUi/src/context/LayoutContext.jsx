@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const LayoutContext = createContext();
 
@@ -16,6 +16,16 @@ export const LayoutProvider = ({children}) => {
         setSidebarOpen((prev) => !prev);
     }
 
+    useEffect(() => {
+
+        if(darkMode){
+            document.body.classList.add('dark-body');
+        }
+        else{
+            document.body.classList.remove('dark-body');
+        }
+
+    }, [darkMode]);
 
     return (
         <LayoutContext.Provider
